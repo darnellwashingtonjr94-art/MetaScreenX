@@ -7,7 +7,7 @@ COPY frontend/ ./
 RUN npm run build
 
 # --- Stage 2: Backend Build (Rust) ---
-FROM rust:1.75 AS backend-builder
+FROM rust:1.85 AS backend-builder
 WORKDIR /app/backend
 COPY backend/Cargo.toml ./
 COPY backend/src ./src
