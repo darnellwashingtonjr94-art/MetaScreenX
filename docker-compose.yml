@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  backend:
+    build: 
+      context: .
+      target: backend-dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend:/usr/src/app/backend
+    environment:
+      - RUST_LOG=info
+
+  frontend:
+    build:
+      context: .
+      target: frontend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/usr/src/app/frontend
+    depends_on:
+      - backend
